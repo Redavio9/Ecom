@@ -1,8 +1,8 @@
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:17-jdk-jammy
 
 WORKDIR /app
-COPY target/solix.jar ./solix.jar
+COPY target/app.jar ./app.jar
 
 EXPOSE 8082
 
-CMD ["java", "-jar" , "solix.jar"]
+CMD ["java", "-jar", "app.jar"]

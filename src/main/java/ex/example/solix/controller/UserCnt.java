@@ -2,12 +2,29 @@ package ex.example.solix.controller;
 
 import org.springframework.web.bind.annotation.*;
 import ex.example.solix.models.User;
-
+import ex.example.solix.repository.*;
 import java.lang.reflect.Array;
 import java.util.*;
 
 @RestController
 public class UserCnt {
+
+    @Autowired
+    UserRep userRep;
+    @PostMapping("/users")
+    public User PostUser(@RequestBody User user)
+    {
+        User newUser = new User();
+        newUser.setEmail(user.getEmail());
+        newUser.setFirstName(user.getFirstName());
+        newUser.setId(user.getId());
+        newUser.setPassword(user.getPassword());
+        
+        User savedUser=userRep.save(newUser)
+        return newUser;
+    }
+
+
     @GetMapping("/users/{userid}")
     public User getUSerById(@PathVariable("userid") Long Id)
     {
@@ -18,14 +35,5 @@ public class UserCnt {
         return user1;
     }
 
-    @PostMapping("/users")
-    public User PostUser(@RequestBody User user)
-    {
-        User newUser = new User();
-        newUser.setEmail(user.getEmail());
-        newUser.setFirstName(user.getFirstName());
-        newUser.setId(user.getId());
-        newUser.setPassword(user.getPassword());
-        return newUser;
-    }
+
 }

@@ -4,7 +4,7 @@ services:
     container_name: postgres
     restart: always
     ports:
-      - '5432:5432'
+      - '5433:5432'
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
@@ -27,3 +27,7 @@ services:
       - "8083:8082"
     depends_on:
       - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/webapp
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
