@@ -1,7 +1,6 @@
 ex/example/solix/service/UserService.class
 ex/example/solix/models/User.class
 ex/example/solix/service/UserServiceImp.class
-ex/example/solix/controller/HomeController.class
 ex/example/solix/SolixApplication.class
 ex/example/solix/repository/UserRep.class
 ex/example/solix/controller/UserCnt.class
