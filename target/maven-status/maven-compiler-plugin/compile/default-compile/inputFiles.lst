@@ -1,7 +1,12 @@
 /mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/repository/UserRep.java
 /mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/service/UserService.java
 /mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/service/UserServiceImp.java
+/mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/repository/PostRep.java
 /mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/controller/UserCnt.java
+/mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/service/PostServiceImp.java
 /mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/models/User.java
 /mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/SolixApplication.java
+/mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/controller/PostController.java
+/mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/models/Post.java
+/mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/service/PostService.java
 /mnt/c/Users/REDAV/Desktop/Ecom/src/main/java/ex/example/solix/controller/HomeController.java

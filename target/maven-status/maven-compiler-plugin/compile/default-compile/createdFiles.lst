@@ -1,6 +1,12 @@
-ex/example/solix/service/UserService.class
-ex/example/solix/models/User.class
+ex/example/solix/service/PostServiceImp.class
 ex/example/solix/service/UserServiceImp.class
-ex/example/solix/SolixApplication.class
+ex/example/solix/models/Post.class
+ex/example/solix/controller/HomeController.class
+ex/example/solix/service/PostService.class
 ex/example/solix/repository/UserRep.class
+ex/example/solix/service/UserService.class
+ex/example/solix/controller/PostController.class
+ex/example/solix/models/User.class
+ex/example/solix/repository/PostRep.class
+ex/example/solix/SolixApplication.class
 ex/example/solix/controller/UserCnt.class
