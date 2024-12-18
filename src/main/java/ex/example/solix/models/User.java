@@ -1,6 +1,8 @@
 package ex.example.solix.models;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,13 +37,16 @@ public class User {
     @Column(name = "gender")
     private String gender;
 
-    @ElementCollection
-    @CollectionTable(name = "user_followers", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "follower_id")
-    private List<Long> followers;
+//    @ElementCollection
+//    @CollectionTable(name = "user_followers", joinColumns = @JoinColumn(name = "user_id"))
+//    @Column(name = "follower_id")
+    private List<Long> followers = new ArrayList<>();
 
-    @ElementCollection
-    @CollectionTable(name = "user_followings", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "following_id")
-    private List<Long> followings;
+//    @ElementCollection
+//    @CollectionTable(name = "user_followings", joinColumns = @JoinColumn(name = "user_id"))
+//    @Column(name = "following_id")
+    private List<Long> followings = new ArrayList<>();
+
+    @ManyToMany
+    private List<Post> savedPost= new ArrayList<>();
 }

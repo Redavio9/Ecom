@@ -42,30 +42,19 @@ public class UserCnt {
     @PutMapping("/users/{userid}")
     public User updateUSerById(@RequestBody User user, @PathVariable("userid")   Long Id) throws Exception
     {
-//        Optional <User> user1 = userRep.findById(Id);
-//        if(user1.isEmpty())
-//            throw new Exception("user not exist");
-//        User OldUser = user1.get();
-//        if(user.getEmail() != null)
-//            OldUser.setEmail(user.getEmail());
-//        if(user.getFirstName() != null)
-//            OldUser.setFirstName(user.getFirstName());
-//        if(user.getLastName() != null)
-//            OldUser.setLastName(user.getLastName());
-//        User updateUser=userRep.save(OldUser);
-//        return updateUser;
+
         User updatedUser = userService.updateUser(user, Id);
         return updatedUser;
     }
 
-//    @DeleteMapping("user/{userid}")
-//    public String deleteUSer(@PathVariable("userid") Long userid) throws Exception {
-//        Optional <User> user = userRep.findById(userid);
-//        if(user.isEmpty())
-//            throw new Exception("user not exist");
-//        userRep.delete(user.get());
-//        return "user delete succes with id " + userid;
-//    }
+    @DeleteMapping("user/{userid}")
+    public String deleteUSer(@PathVariable("userid") Long userid) throws Exception {
+        Optional <User> user = userRep.findById(userid);
+        if(user.isEmpty())
+            throw new Exception("user not exist");
+        userRep.delete(user.get());
+        return "user delete succes with id " + userid;
+    }
 
     @PutMapping("/user/{userId1}/{userId2}")
     public User followUserHan(@PathVariable Long userId1, @PathVariable Long userId2) throws Exception {
