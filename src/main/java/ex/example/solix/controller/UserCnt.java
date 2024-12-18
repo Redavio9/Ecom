@@ -1,7 +1,9 @@
 package ex.example.solix.controller;
 
+import ex.example.solix.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ex.example.solix.models.User;
+import ex.example.solix.models.*;
 import ex.example.solix.repository.*;
 import java.lang.reflect.Array;
 import java.util.*;
@@ -11,29 +13,70 @@ public class UserCnt {
 
     @Autowired
     UserRep userRep;
+    @Autowired
+    UserService userService;
+
     @PostMapping("/users")
     public User PostUser(@RequestBody User user)
     {
-        User newUser = new User();
-        newUser.setEmail(user.getEmail());
-        newUser.setFirstName(user.getFirstName());
-        newUser.setId(user.getId());
-        newUser.setPassword(user.getPassword());
-        
-        User savedUser=userRep.save(newUser)
-        return newUser;
+        User savedUser=userService.registerUser(user);
+        return savedUser;
+    }
+
+    @GetMapping("/users")
+    public List<User> getUSers()
+    {
+        List<User> users = userRep.findAll();
+        return users;
     }
 
 
     @GetMapping("/users/{userid}")
-    public User getUSerById(@PathVariable("userid") Long Id)
-    {
-        List<User> users = new ArrayList<>();
-        User user1 = new User(1L, "reda", "Solix", "reda@gmail.com", "123456");
-        user1.setId(Id);
+    public User getUSerById(@PathVariable("userid") Long Id) throws Exception {
+        User user = userService.findUserById(Id);
+        return user;
 
-        return user1;
+//        return null;
     }
 
+    @PutMapping("/users/{userid}")
+    public User updateUSerById(@RequestBody User user, @PathVariable("userid")   Long Id) throws Exception
+    {
+//        Optional <User> user1 = userRep.findById(Id);
+//        if(user1.isEmpty())
+//            throw new Exception("user not exist");
+//        User OldUser = user1.get();
+//        if(user.getEmail() != null)
+//            OldUser.setEmail(user.getEmail());
+//        if(user.getFirstName() != null)
+//            OldUser.setFirstName(user.getFirstName());
+//        if(user.getLastName() != null)
+//            OldUser.setLastName(user.getLastName());
+//        User updateUser=userRep.save(OldUser);
+//        return updateUser;
+        User updatedUser = userService.updateUser(user, Id);
+        return updatedUser;
+    }
 
+//    @DeleteMapping("user/{userid}")
+//    public String deleteUSer(@PathVariable("userid") Long userid) throws Exception {
+//        Optional <User> user = userRep.findById(userid);
+//        if(user.isEmpty())
+//            throw new Exception("user not exist");
+//        userRep.delete(user.get());
+//        return "user delete succes with id " + userid;
+//    }
+
+    @PutMapping("/user/{userId1}/{userId2}")
+    public User followUserHan(@PathVariable Long userId1, @PathVariable Long userId2) throws Exception {
+        User user = userService.fllowUser(userId1, userId2);
+        return user;
+    }
+
+    @GetMapping("/users/search")
+    public List <User> searchUser(@RequestParam("query") String query)
+    {
+        List<User> users = userService.searchUser(query);
+        return users;
+    }
 }

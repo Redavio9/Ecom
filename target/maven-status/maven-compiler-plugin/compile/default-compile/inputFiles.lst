@@ -1,4 +1,7 @@
 /Users/rarraji/Desktop/solix/src/main/java/ex/example/solix/controller/UserCnt.java
+/Users/rarraji/Desktop/solix/src/main/java/ex/example/solix/service/UserServiceImp.java
 /Users/rarraji/Desktop/solix/src/main/java/ex/example/solix/models/User.java
+/Users/rarraji/Desktop/solix/src/main/java/ex/example/solix/service/UserService.java
 /Users/rarraji/Desktop/solix/src/main/java/ex/example/solix/SolixApplication.java
 /Users/rarraji/Desktop/solix/src/main/java/ex/example/solix/controller/HomeController.java
+/Users/rarraji/Desktop/solix/src/main/java/ex/example/solix/repository/UserRep.java
