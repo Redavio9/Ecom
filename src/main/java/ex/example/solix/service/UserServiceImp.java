@@ -25,7 +25,7 @@ public class UserServiceImp implements UserService {
 
         return userRep.save(newUser);
     }
-    
+
 
     @Override
     public User findUserById(Long Id) throws Exception
