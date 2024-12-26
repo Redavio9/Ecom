@@ -1,5 +1,6 @@
 package ex.example.solix.service;
 
+import ex.example.solix.Config.JwtProvider;
 import ex.example.solix.models.User;
 import ex.example.solix.repository.UserRep;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,16 +44,16 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User fllowUser(Long userId1, Long userId2) throws Exception {
-        User user1 = findUserById(userId1);
+    public User fllowUser(Long reqUserId, Long userId2) throws Exception {
+        User reqUser = findUserById(reqUserId);
         User user2 = findUserById(userId2);
 
-        user1.getFollowers().add(userId2); // Added correct logic
-        user2.getFollowings().add(userId1); // Added correct logic
+        reqUser.getFollowers().add(userId2); // Added correct logic
+        user2.getFollowings().add(reqUserId); // Added correct logic
 
-        userRep.save(user1);
+        userRep.save(reqUser);
         userRep.save(user2);
-        return user1;
+        return reqUser;
     }
 
     @Override
@@ -65,6 +66,8 @@ public class UserServiceImp implements UserService {
             existingUser.setFirstName(user.getFirstName());
         if (user.getLastName() != null)
             existingUser.setLastName(user.getLastName());
+        if(user.getGender() != null)
+            existingUser.setGender(user.getGender());
 
         return userRep.save(existingUser);
     }
@@ -72,6 +75,13 @@ public class UserServiceImp implements UserService {
     @Override
     public List<User> searchUser(String query) {
         return userRep.searchUser(query);
+    }
+
+    @Override
+    public User findUserByJwt(String jwt) {
+        String email = JwtProvider.getEmailFromJwtToken(jwt);
+        User user=userRep.findByEmail(email);
+        return user;
     }
 }
 

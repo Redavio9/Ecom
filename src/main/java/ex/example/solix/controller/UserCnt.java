@@ -16,14 +16,9 @@ public class UserCnt {
     @Autowired
     UserService userService;
 
-    @PostMapping("/users")
-    public User PostUser(@RequestBody User user)
-    {
-        User savedUser=userService.registerUser(user);
-        return savedUser;
-    }
 
-    @GetMapping("/users")
+
+    @GetMapping("/api/users")
     public List<User> getUSers()
     {
         List<User> users = userRep.findAll();
@@ -31,7 +26,7 @@ public class UserCnt {
     }
 
 
-    @GetMapping("/users/{userid}")
+    @GetMapping("/api/users/{userid}")
     public User getUSerById(@PathVariable("userid") Long Id) throws Exception {
         User user = userService.findUserById(Id);
         return user;
@@ -39,15 +34,15 @@ public class UserCnt {
 //        return null;
     }
 
-    @PutMapping("/users/{userid}")
-    public User updateUSerById(@RequestBody User user, @PathVariable("userid")   Long Id) throws Exception
+    @PutMapping("/api/users/")
+    public User updateUSerById(@RequestHeader("Authorization") String jwt, @RequestBody User user) throws Exception
     {
-
-        User updatedUser = userService.updateUser(user, Id);
+        User reqUser = userService.findUserByJwt(jwt);
+        User updatedUser = userService.updateUser(user, reqUser.getId());
         return updatedUser;
     }
 
-    @DeleteMapping("user/{userid}")
+    @DeleteMapping("/api/user/{userid}")
     public String deleteUSer(@PathVariable("userid") Long userid) throws Exception {
         Optional <User> user = userRep.findById(userid);
         if(user.isEmpty())
@@ -56,16 +51,26 @@ public class UserCnt {
         return "user delete succes with id " + userid;
     }
 
-    @PutMapping("/user/{userId1}/{userId2}")
-    public User followUserHan(@PathVariable Long userId1, @PathVariable Long userId2) throws Exception {
-        User user = userService.fllowUser(userId1, userId2);
+    @PutMapping("/api/user/follow/{userId2}")
+    public User followUserHan(@RequestHeader("Authorization") String jwt, @PathVariable Long userId2) throws Exception {
+        User reqUser = userService.findUserByJwt(jwt);
+        User user = userService.fllowUser(reqUser.getId(), userId2);
         return user;
     }
 
-    @GetMapping("/users/search")
+    @GetMapping("/api/users/search")
     public List <User> searchUser(@RequestParam("query") String query)
     {
         List<User> users = userService.searchUser(query);
         return users;
+    }
+
+    @GetMapping("/api/users/profile")
+    public User getUserFromToken(@RequestHeader("Authorization") String jwt) throws Exception  {
+        User user = userService.findUserByJwt(jwt);
+        user.setPassword(null);
+        System.out.println("jwt ------- > " + jwt);
+        return user;
+//        userService
     }
 }
