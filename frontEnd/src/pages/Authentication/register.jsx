@@ -17,7 +17,8 @@ const initialValues = {
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().min(6, "Password must be at least 6 characters").required("Required"),
-  userName: Yup.string().min(3, "Username must be at least 3 characters").required("Required"),
+  firstName: Yup.string().min(3, "Username must be at least 3 characters").required("Required"),
+  lastName: Yup.string().min(3, "Username must be at least 3 characters").required("Required"),
   confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Required'),
   phoneNumber: Yup.string().min(10, "Phone number must be at least 10 characters").required("Required"),
   gender: Yup.string().required('Required'),
@@ -41,13 +42,24 @@ const Register = () => {
           <div>
             <Field
               as={TextField}
-              name="userName"
-              placeholder="Username"
+              name="firstName"
+              placeholder="firstName"
               variant="outlined"
               fullWidth
               type="text"
             />
-            <ErrorMessage name="userName" component="div" className="text-red-500" />
+            <ErrorMessage name="firstName" component="div" className="text-red-500" />
+          </div>
+          <div>
+            <Field
+              as={TextField}
+              name="lastName"
+              placeholder="lastName"
+              variant="outlined"
+              fullWidth
+              type="text"
+            />
+            <ErrorMessage name="lastName" component="div" className="text-red-500" />
           </div>
           <div>
             <Field

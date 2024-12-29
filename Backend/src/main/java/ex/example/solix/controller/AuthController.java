@@ -63,7 +63,7 @@ public class AuthController {
         );
 
         // Generate JWT Token
-        String token = JwtProvider.generateToken(authentication); // استخدم JwtProvider بشكل صحيح
+        String token = JwtProvider.generateToken(authentication);
 
         // Response
         return new AuthRespone(token, "Registered Successfully");

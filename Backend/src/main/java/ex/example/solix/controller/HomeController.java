@@ -1,17 +1,17 @@
-package ex.example.solix.controller;
+// package ex.example.solix.controller;
 
-import org.springframework.web.bind.annotation.*;
+// import org.springframework.web.bind.annotation.*;
 
-@RestController
-public class HomeController
-{
-    @GetMapping
-    public String HomeControllerHandler()
-    {
-        return "this is home controller Solix";
-    }
-////    @PostMapping
-////    @PutMapping
-////    @DeleteMapping
-}
+// @RestController
+// public class HomeController
+// {
+//     @GetMapping
+//     public String HomeControllerHandler()
+//     {
+//         return "this is home controller Solix";
+//     }
+// ////    @PostMapping
+// ////    @PutMapping
+// ////    @DeleteMapping
+// }
 
