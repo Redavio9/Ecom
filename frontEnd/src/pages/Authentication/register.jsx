@@ -37,7 +37,7 @@ const Register = () => {
       validationSchema={validationSchema}
       initialValues={initialValues}
     >
-      <Form className="space-y-5">
+      <Form className="space-y-5 " >
         <div className="space-y-5">
           <div>
             <Field

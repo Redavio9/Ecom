@@ -1,11 +1,16 @@
 import './App.css';
-import Authentication from './pages/Authentication/Authentication';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage/HomePage';
+import Authentication from './pages/Authentication/Authentication'
 
 function App() {
   return (
-    <div className="">
-      <Authentication/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/*" element={<HomePage />} />
+        <Route path="/auth" element={<Authentication />} />
+      </Routes>
+    </Router>
   );
 }
 

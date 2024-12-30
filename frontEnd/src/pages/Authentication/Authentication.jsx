@@ -8,10 +8,10 @@ const Authentication = () => {
   return (
     <div>
         <Grid container>
-            <Grid className='h-screen overflow-hidden' item xs={7}>
-                <img className="h-full" src="https://us.images.westend61.de/0001363195pw/digitally-generated-image-of-network-connection-against-white-background-EYF04499.jpg" alt="" />
+            <Grid className='h-screen overflow-hidden' item xs={8}>
+                <img className="h-full" src="https://img.freepik.com/free-vector/futuristic-ai-web-tech-background-with-circuit-lines-design_1017-50183.jpg?t=st=1735593089~exp=1735596689~hmac=0d26bf3ee456efb015c65fa4da57b7e3696e44865b37cf2a479dfad25428398e&w=2000" alt="" />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={4} className="bg-gray-50 ">
               <div className='px-20 flex flex-col justify-center h-full'>
                 <Card className='card p-8'>
                   <div className='flex flex-col items-center mb-5 space-y-1'>
