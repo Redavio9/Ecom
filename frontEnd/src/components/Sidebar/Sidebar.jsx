@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { navigationMenu } from "./SidebarNav.js";
-import { Avatar, Divider, Button, Menu, MenuItem } from "@mui/material";
+import { Avatar, Divider, Button, Menu, MenuItem, Card } from "@mui/material";
 import MoreVert from "@mui/icons-material/MoreVert";  // Import the correct icon
 
 const Sidebar = () => {
@@ -16,21 +16,22 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="card h-screen flex justify-between flex-col py-5">
+    <Card className="h-screen flex justify-between flex-col py-5" sx={{ borderRadius: '12px', boxShadow: 1 }}>
       <div className="space-y-8 pl-5 pb-8">
         <div>
-          <span className="logo font-bold text-xl">1337</span>
+          <span className="logo font-mono font-bold text-2xl text-emerald-800">1337</span>
         </div>
+      </div>
 
-        <div className="space-y-8">
+        <div className="space-y-8 pl-5 pb-8">
           {navigationMenu.map((item) => (
             <div key={item.title} className="cursor-pointer flex space-x-3 items-center">
-              {item.icon}
+              <div className="text-emerald-800">{item.icon }</div>
               <p className="text-xl">{item.title}</p>
             </div>
           ))}
         </div>
-      </div>
+      {/* </div> */}
 
       {/* Section user */}
       <div>
@@ -65,13 +66,11 @@ const Sidebar = () => {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem onClick={handleClose}>Logout</MenuItem>
           </Menu>
         </div>
       </div>
-    </div>
+    </Card >
   );
 };
 

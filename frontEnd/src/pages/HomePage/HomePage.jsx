@@ -23,7 +23,7 @@ function HomePage() {
 
         {/* Section principale */}
         <Grid
-          lg={location.pathname === "/" ? 6 : 6}  // Ajuste la taille du grid en fonction de la route
+          lg={location.pathname === "/" ? 6 : 9}  // Ajuste la taille du grid en fonction de la route
           item
           className="px-5 flex justify-center"
           xs={12}
