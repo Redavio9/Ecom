@@ -1,17 +1,18 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import Authentication from './pages/Authentication/Authentication'
+import { Routes, Route } from 'react-router-dom';
+// import HomePage from './pages/HomePage/HomePage';
+import Authentication from './pages/Authentication/Authentication';
+import Message from './pages/message/message';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/*" element={<HomePage />} />
-        <Route path="/auth" element={<Authentication />} />
-      </Routes>
-    </Router>
+    <Routes>
+      {/* <Route path="/*" element={<HomePage />} /> */}
+      <Route path="/*" element={<Authentication />} />
+      <Route path="/messages" element={<Message />} />
+    </Routes>
   );
 }
 
 export default App;
+

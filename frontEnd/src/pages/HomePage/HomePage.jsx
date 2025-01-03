@@ -7,9 +7,17 @@ import Profile from "../../components/Profile/Profile.jsx";
 import CreateReelsForm from "../../components/Reels/CreatReelsForm.jsx";
 import { Route, Routes, useLocation } from "react-router-dom";
 import HomeRight from "../../components/HomeRight/HomeRight.jsx";
+// import { useDispatch } from "react-redux";
 
 function HomePage() {
+  // const dispatch = useDispatch();
   const location = useLocation();  // Pour récupérer le chemin actuel
+  // const jwt = localStorage.getItem("jwt");
+  // const {auth} = useSelector(store=>store);
+
+  // useEffect(() => {
+  //   dispatch(getAllPosts());
+  // })
 
   return (
     <div className="px-20">
@@ -37,15 +45,12 @@ function HomePage() {
         </Grid>
 
         {/* HomeRight - À afficher uniquement sur une route spécifique */}
-        <Grid item lg={3} className="relative">
+        {location.pathname === "/" && <Grid item lg={3} className="relative">
           <div className="sticky top-0 w-full">
-            {/* Placer HomeRight dans une route spécifique */}
-            {/* <Routes>
-              <Route path="/home-right" element={<HomeRight />} />
-            </Routes> */}
+
             <HomeRight />
           </div>
-        </Grid>
+        </Grid>}
       </Grid>
     </div>
   );

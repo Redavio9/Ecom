@@ -4,6 +4,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { RegisterUserAction } from '../../Redux/Auth/auth.action';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   userName: "",
@@ -25,6 +26,7 @@ const validationSchema = Yup.object({
 });
 
 const Register = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleSubmit = (values) => {
     console.log("Form submitted with values:", values);
@@ -32,6 +34,7 @@ const Register = () => {
   };
 
   return (
+    <>
     <Formik
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
@@ -134,6 +137,15 @@ const Register = () => {
         </Button>
       </Form>
     </Formik>
+    <div className="flex gap-2 items-center  justify-center p-4">
+      <p> Already have an account?  </p>
+        <Button
+          onClick={() => navigate("/login")}
+        >
+          Login
+        </Button>
+    </div>
+    </>
   );
 };
 
