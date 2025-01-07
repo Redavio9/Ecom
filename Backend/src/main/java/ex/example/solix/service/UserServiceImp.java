@@ -80,7 +80,9 @@ public class UserServiceImp implements UserService {
     @Override
     public User findUserByJwt(String jwt) {
         String email = JwtProvider.getEmailFromJwtToken(jwt);
-        User user=userRep.findByEmail(email);
+        System.out.println("email from jwt -----> " + email);
+        System.out.println("jwt from jwt -----> " + jwt);
+        User user = userRep.findByEmail(email);
         return user;
     }
 }

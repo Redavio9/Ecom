@@ -15,66 +15,70 @@ const validationSchema = Yup.object({
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleSubmit = (values) => {
     console.log("handle submit", values);
-    dispatch(LoginUserAction({ data: values }));
+    // Dispatcher l'action de connexion et rediriger après une connexion réussie
+    dispatch(LoginUserAction({ data: values }, navigate));
   };
 
   return (
     <>
-    <Formik
-      onSubmit={handleSubmit}
-      validationSchema={validationSchema}
-      initialValues={initialValues}
-    >
-      <Form className="space-y-5">
-        <div className="space-y-5">
-          <div>
-            <Field
-              as={TextField}
-              name="email"
-              placeholder="Email"
-              variant="outlined"
-              fullWidth
-              type="email"
-            />
-            <ErrorMessage name="email" component="div" className="text-red-500" />
+      <Formik
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+        initialValues={initialValues}
+      >
+        <Form className="space-y-5">
+          <div className="space-y-5">
+            <div>
+              <Field
+                as={TextField}
+                name="email"
+                placeholder="Email"
+                variant="outlined"
+                fullWidth
+                type="email"
+              />
+              <ErrorMessage name="email" component="div" className="text-red-500" />
+            </div>
+            <div>
+              <Field
+                as={TextField}
+                name="password"
+                placeholder="Password"
+                variant="outlined"
+                fullWidth
+                type="password"
+              />
+              <ErrorMessage name="password" component="div" className="text-red-500" />
+            </div>
           </div>
-          <div>
-            <Field
-              as={TextField}
-              name="password"
-              placeholder="Password"
-              variant="outlined"
-              fullWidth
-              type="password"
-            />
-            <ErrorMessage name="password" component="div" className="text-red-500" />
-          </div>
-        </div>
-        <Button 
-        type="submit" 
-        variant="contained" 
-        color="primary" 
-        fullWidth>
-          Login
-        </Button>
-      </Form>
-    </Formik>
-    <div className="flex gap-2 items-center  justify-center p-4">
-      <p> Don't have an account? </p>
+          <Button 
+            type="submit" 
+            variant="contained" 
+            color="primary" 
+            fullWidth
+          >
+            Login
+          </Button>
+        </Form>
+      </Formik>
+
+      <div className="flex gap-2 items-center justify-center p-4">
+        <p> Don't have an account? </p>
         <Button
           onClick={() => navigate("/register")}
         >
           Register
         </Button>
-    </div>
+      </div>
 
-    <div>
-      <Button className="w-full" variant='outlined'>
-        Forgot Password?
-      </Button>
-    </div>
+      <div>
+        <Button className="w-full" variant='outlined'>
+          Forgot Password?
+        </Button>
+      </div>
     </>
   );
 };
