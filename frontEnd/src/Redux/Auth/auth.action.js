@@ -81,29 +81,53 @@ import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE } from './auth.act
 import { GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE } from './auth.actionType.js';
 
 export const LoginUserAction = (LoginData, navigate) => async (dispatch) => {
-  try {
-    dispatch({ type: 'LOGIN_REQUEST' });
+  try 
+  {
+    dispatch({ type: LOGIN_REQUEST });
     const { data } = await axios.post(`${API_URL}/auth/signin`, LoginData.data);
     
-    if (data.token) {
+    if (data.token) 
+    {
+      console.log("12hna12");
       localStorage.setItem('jwt', data.token);
-      // Assure-toi que 'data' contient bien 'user' et 'token'
       dispatch({ 
-        type: 'LOGIN_SUCCESS', 
+        type: LOGIN_SUCCESS, 
         payload: { user: data.user, jwt: data.token } 
       });
       navigate('/');  // Rediriger vers la page d'accueil après le succès
-    } else {
-      dispatch({ type: 'LOGIN_FAILURE' });
+      window.location.href = '/';
+    } 
+    else {
+      dispatch({ type: LOGIN_FAILURE });
     }
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Login error:", error);
     dispatch({
-      type: 'LOGIN_FAILURE',
+      type: LOGIN_FAILURE,
       payload: error.message,  // Ajouter le message d'erreur
     });
   }
 };
+
+
+// export const LoginUserAction = (LoginData) => async (dispatch) => {
+//   try {
+//     dispatch({ type: LOGIN_REQUEST });
+//     const { data } = await axios.post(`${API_URL}/auth/signin`, LoginData.data);
+//     if(data.token) {
+//         localStorage.setItem('jwt', data.token);
+//         // LoginData.navigate('/dashboard');
+//         }
+//         console.log("login success", data);
+//     dispatch({ type: LOGIN_SUCCESS, payload: data.jwt });
+//   } catch (error) {
+//     dispatch({
+//       type: LOGIN_FAILURE,
+//     //   payload: error.response.data.message, 
+//     });
+//   }
+// }
 
 
 

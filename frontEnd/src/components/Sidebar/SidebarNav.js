@@ -44,7 +44,7 @@ export const navigationMenu = [
   },
   {
     title : "Profile",
-    href : "/profile",
+    href : "/profile/1",
     icon : <ProfileIcon/>,
   },
   {

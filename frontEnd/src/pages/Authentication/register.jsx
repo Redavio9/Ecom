@@ -31,6 +31,7 @@ const Register = () => {
   const handleSubmit = (values) => {
     console.log("Form submitted with values:", values);
     dispatch(RegisterUserAction({ data: values }));
+    window.location.href = '/login';
   };
 
   return (
