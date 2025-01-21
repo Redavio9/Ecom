@@ -88,7 +88,6 @@ export const LoginUserAction = (LoginData, navigate) => async (dispatch) => {
     
     if (data.token) 
     {
-      console.log("12hna12");
       localStorage.setItem('jwt', data.token);
       dispatch({ 
         type: LOGIN_SUCCESS, 
