@@ -1,3 +1,5 @@
+
+
 const initialState = {
   user: null,
   loading: false,
@@ -16,11 +18,13 @@ export const authReducer = (state = initialState, action) => {
 
     // Réussite de la récupération du profil utilisateur
     case 'GET_PROFILE_SUCCESS':
+      console.log("Payload in Reducer:", action.payload); // Check payload in reducer
       return { 
         ...state, 
         loading: false, 
-        user: action.payload, 
-        isAuthenticated: true,  // L'utilisateur est authentifié après la récupération du profil
+        user: action.payload,
+        isAuthenticated: true,
+        jwt: true,
       };
 
     // Réussite de la connexion et de l'inscription

@@ -24,7 +24,7 @@ public class Chat {
     private String chatName;
     private String chatMessage;
     private String chatImageUrl;
-    @ManyToMany
+    @ManyToMany()
     private List<User> users = new ArrayList<>();
 
     private LocalDateTime createdAt;

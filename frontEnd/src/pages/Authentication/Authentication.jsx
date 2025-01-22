@@ -10,7 +10,6 @@ const Authentication = () => {
 
  const token = localStorage.getItem('jwt')
 
- console.log('token', token)
   if (token) {
     
     window.location.href = '/';
@@ -48,3 +47,4 @@ const Authentication = () => {
 }
 
 export default Authentication
+

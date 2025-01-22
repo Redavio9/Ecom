@@ -15,6 +15,11 @@ const reels = [1,1,1,1,1,1,1,1]
 
 
 function Profile() {
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     const [value, setValue] = React.useState('post');
 
     const handleChange = (event, newValue) => {
@@ -80,6 +85,9 @@ function Profile() {
             {/* <div className="grid grid-cols-3 gap-4 p-5"> */}
         </div>
       </div>
+      <section>
+        <ProfileModal open={open} handleClose={handleClose} />
+      </section>
     </Card >
   );
 }

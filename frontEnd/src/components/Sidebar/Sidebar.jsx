@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { navigationMenu } from "./SidebarNav.js";
 import { Avatar, Divider, Button, Menu, MenuItem, Card } from "@mui/material";
 import MoreVert from "@mui/icons-material/MoreVert";  // Import the correct icon
-import { string } from "yup";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+
+
 // import { useHref } from "react-router";
 // import { Navigate } from "react-router";
 
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  
+  const {auth} = useSelector(store => store);
+  console.log("************", auth);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,13 +28,16 @@ const Sidebar = () => {
   };
 
   // create function handle
-  const handle = (href) => {
-    return () => {
+  // const handle = (href) => {
+  //   return () => {
     
-        console.log("clicked");
-        window.location.href = href;
-  }
-}
+  //       console.log("clicked");
+  //       window.location.href = href;
+  // }
+
+  const handle = useNavigate();
+
+// }
 
   return (
     <Card className="h-screen flex justify-between flex-col py-5" sx={{ borderRadius: '12px', boxShadow: 1 }}>
@@ -40,7 +49,7 @@ const Sidebar = () => {
 
         <div className="space-y-8 pl-5 pb-8">
           {navigationMenu.map((item) => (
-            <div key={item.title} className="cursor-pointer flex space-x-3 items-center" onClick={handle(item.href)}>
+            <div key={item.title} className="cursor-pointer flex space-x-3 items-center" onClick={() => handle(item.href)}>
               <div className="text-emerald-800">{item.icon } </div>
               <p className="text-xl">{item.title}</p>
               
@@ -56,8 +65,8 @@ const Sidebar = () => {
           <div className="flex items-center space-x-3">
             <Avatar src="https://randomuser.me/api/port" />
             <div>
-              <p className="font-bold">Reda</p>
-              <p className="text-xl text-gray-500">@Reda</p>
+              <p className="font-bold">{auth.user?.firstName.toUpperCase()}</p>
+              <p className="text-xl text-gray-500">@{auth.user?.firstName.toLowerCase()}</p>
             </div>
           </div>
 

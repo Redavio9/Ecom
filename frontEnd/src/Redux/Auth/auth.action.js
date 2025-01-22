@@ -80,6 +80,7 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './auth.actionType.j
 import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE } from './auth.actionType.js';
 import { GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE } from './auth.actionType.js';
 
+
 export const LoginUserAction = (LoginData, navigate) => async (dispatch) => {
   try 
   {
@@ -148,20 +149,43 @@ export const RegisterUserAction = (LoginData, navigate) => async (dispatch) => {
   }
 };
 
+// export const GetProfileAction = (token) => async (dispatch) => {
+//   try {
+//     dispatch({ type: GET_PROFILE_REQUEST });
+//     const { data } = await axios.get(`${API_URL}/api/users/profile`, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     console.log("profile", data);
+//     dispatch({ type: GET_PROFILE_SUCCESS, payload: data.jwt });
+//   } catch (error) {
+//     dispatch({
+//       type: GET_PROFILE_FAILURE,
+//       // payload: error.response.data.message,
+//     });
+//   }
+// };
+
+
 export const GetProfileAction = (token) => async (dispatch) => {
   try {
-    dispatch({ type: GET_PROFILE_REQUEST });
+    dispatch({ type: "GET_PROFILE_REQUEST" });
+
     const { data } = await axios.get(`${API_URL}/api/users/profile`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("profile", data);
-    dispatch({ type: GET_PROFILE_SUCCESS, payload: data.jwt });
+
+    console.log("API Profile Data:", data); // Log the profile data
+    console.log("------------------->:", data.firstName); // Log the profile data
+
+
+    // Make sure you're passing the correct data
+    dispatch({ type: "GET_PROFILE_SUCCESS", payload: data }); // Ensure this is passing 'data' properly
   } catch (error) {
-    dispatch({
-      type: GET_PROFILE_FAILURE,
-      // payload: error.response.data.message,
-    });
+    console.error("Profile Error:", error);
+    dispatch({ type: "GET_PROFILE_FAILURE", payload: error.response?.data?.message });
   }
 };

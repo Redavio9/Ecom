@@ -8,7 +8,7 @@ import CreateReelsForm from "../../components/Reels/CreatReelsForm.jsx";
 import { Route, Routes, useLocation } from "react-router-dom";
 import HomeRight from "../../components/HomeRight/HomeRight.jsx";
 import { useDispatch } from "react-redux";
-// import { GetProfileAction } from "../../Redux/Auth/auth.action";
+import { GetProfileAction } from "../../Redux/Auth/auth.action";
 
 function HomePage() {
   console.log("HomePage");
@@ -17,11 +17,12 @@ function HomePage() {
   const jwt = localStorage.getItem("jwt");
 
   // Fetch posts only if JWT is available
-  // useEffect(() => {
-  //   if (jwt) {
-  //     dispatch(GetProfileAction(jwt));
-  //   }
-  // }, [jwt, dispatch]);
+  useEffect(() => {
+    if (jwt) {
+      dispatch(GetProfileAction(jwt));
+      // window.location.href = "/";
+    }
+  }, [jwt]);
 
   const showHomeRight = ["/"].includes(location.pathname);  // List routes that need HomeRight
 
