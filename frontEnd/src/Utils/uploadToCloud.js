@@ -26,7 +26,6 @@ export const uploadToCloud = async (pics, fileTye) => {
         return "";
     }
     
-    }
+}
 
-reda
     
