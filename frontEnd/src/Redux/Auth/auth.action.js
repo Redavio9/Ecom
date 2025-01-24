@@ -94,8 +94,7 @@ export const LoginUserAction = (LoginData, navigate) => async (dispatch) => {
         type: LOGIN_SUCCESS, 
         payload: { user: data.user, jwt: data.token } 
       });
-      navigate('/');  // Rediriger vers la page d'accueil après le succès
-      window.location.href = '/';
+      navigate('/');
     } 
     else {
       dispatch({ type: LOGIN_FAILURE });
@@ -178,8 +177,8 @@ export const GetProfileAction = (token) => async (dispatch) => {
       },
     });
 
-    console.log("API Profile Data:", data); // Log the profile data
-    console.log("------------------->:", data.firstName); // Log the profile data
+    // console.log("API Profile Data:", data); // Log the profile data
+    // console.log("------------------->:", data.firstName); // Log the profile data
 
 
     // Make sure you're passing the correct data
@@ -187,5 +186,22 @@ export const GetProfileAction = (token) => async (dispatch) => {
   } catch (error) {
     console.error("Profile Error:", error);
     dispatch({ type: "GET_PROFILE_FAILURE", payload: error.response?.data?.message });
+  }
+};
+
+
+// creat update profile action
+export const UpdateProfileAction = (data, token) => async (dispatch) => {
+  try {
+    dispatch({ type: "UPDATE_PROFILE_REQUEST" });
+    const { data: response } = await axios.put(`${API_URL}/api/users/`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("UPDATE_PROFILE_SUCCESS:", data); // Log the profile data
+    dispatch({ type: "UPDATE_PROFILE_SUCCESS", payload: response });
+  } catch (error) {
+    dispatch({ type: "UPDATE_PROFILE_FAILURE", payload: error.response?.data?.message });
   }
 };

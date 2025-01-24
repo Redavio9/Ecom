@@ -6,6 +6,7 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import PostCard from "../Post/PostCard";
 import UserReelCard from "../Reels/UserReelCard";
+import ProfileModal from "./ProfileModal";
 
 
 
@@ -16,9 +17,7 @@ const reels = [1,1,1,1,1,1,1,1]
 
 function Profile() {
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+
 
     const [value, setValue] = React.useState('post');
 
@@ -43,7 +42,7 @@ function Profile() {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM11pAVx_eyxMBzVX8slhaENfiB9yBLtV375cVUEgHRXiDqek-wG12njTY67XTil9oX_U&usqp=CAU"
           />
           <Button sx={{ borderRadius: "20px" }} variant="outlined">
-            EDIT PROFILE
+            <ProfileModal />
           </Button>
           
         </div>
@@ -85,9 +84,6 @@ function Profile() {
             {/* <div className="grid grid-cols-3 gap-4 p-5"> */}
         </div>
       </div>
-      <section>
-        <ProfileModal open={open} handleClose={handleClose} />
-      </section>
     </Card >
   );
 }

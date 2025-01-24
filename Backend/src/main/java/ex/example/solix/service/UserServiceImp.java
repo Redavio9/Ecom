@@ -59,7 +59,10 @@ public class UserServiceImp implements UserService {
     @Override
     public User updateUser(User user, Long userId) throws Exception {
         User existingUser = findUserById(userId);
-
+        System.out.println("updateUser -----> " + user);
+        System.out.println("getEmail -----> " + user.getEmail());
+        System.out.println("getFirstName -----> " + user.getFirstName());
+        System.out.println("getGender -----> " + user.getGender());
         if (user.getEmail() != null)
             existingUser.setEmail(user.getEmail());
         if (user.getFirstName() != null)

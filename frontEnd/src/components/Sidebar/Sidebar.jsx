@@ -14,7 +14,7 @@ const Sidebar = () => {
   const open = Boolean(anchorEl);
   
   const {auth} = useSelector(store => store);
-  console.log("************", auth);
+  // console.log("************", auth);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

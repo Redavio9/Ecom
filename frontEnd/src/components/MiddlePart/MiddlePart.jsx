@@ -6,14 +6,20 @@ import ImageIcon from "@mui/icons-material/Image";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import ArticleIcon from "@mui/icons-material/Article";
 import PostCard from "../Post/PostCard";
+import CreatePostModal from "../CreatPost/CreatePostModal";
 
 
 const Story=[1,2,3,4,5,6,7,8]
 const post=[1,2,3,4,5,6,7,8,9,10,11,12]
 const MiddlePart = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => setOpen(false);
   const handleOpenCreatPost = () => {
+    setOpen(true);
     console.log("open");
   }
+
+
   return (
 
     <div className="px-20">
@@ -37,6 +43,7 @@ const MiddlePart = () => {
         <div className="flex justify-between items-center">
           <Avatar src="https://img.freepik.com/premium-photo/marketing-manager-digital-avatar-generative-ai_934475-9082.jpg" />
           <input
+            onClick={handleOpenCreatPost}
             type="text"
             placeholder="What's on your mind?"
             className="outline-none w-[90%] bg-slate-100 rounded-full px-5 py-2 border"
@@ -74,6 +81,12 @@ const MiddlePart = () => {
           {post.map((item) => <PostCard/>)}
           {/* <PostCard/> */}
         </div>
+
+        <div>
+          <CreatePostModal open={open} handleClose={handleClose} /> 
+
+        </div>
+
     </div>
   );
 };
