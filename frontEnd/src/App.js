@@ -7,6 +7,9 @@ import Message from './pages/message/message';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { GetProfileAction } from './Redux/Auth/auth.action';
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { GetProfileAction } from './Redux/Auth/auth.action';
 
 
 function App() {

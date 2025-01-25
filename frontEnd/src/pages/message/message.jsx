@@ -1,10 +1,7 @@
-import React, { use, useState , useEffect} from "react";
+import React, {useState} from "react";
 import { Box, TextField, IconButton, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import MenuIcon from "@mui/icons-material/Menu";
-// import avatar1 from '../../static/images/avatar3.png'
-// import avatar2 from '../../static/images/avatare2.png'
-// import avatar3 from '../../static/images/avatar1.png'
 import {MyFriends} from '../../components/Friends/friends.js';
 
 

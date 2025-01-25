@@ -1,10 +1,9 @@
 import React from "react";
-import { Modal, Box, Typography, getInputUtilityClass } from "@mui/material";
+import { Modal, Box} from "@mui/material";
 import { useFormik } from "formik";
 import { Avatar, Button, IconButton, Backdrop, CircularProgress } from "@mui/material";
 import ImageIcon from "@mui/icons-material/Image";
 import VideoIcon from '@mui/icons-material/VideoCall';
-import { styled } from "@mui/system";
 import { uploadToCloud } from "../../Utils/uploadToCloud";
 
 
@@ -34,10 +33,17 @@ function CreatePostModal({ handleClose, open }) {
     setSelectedImage(imageUrl);
     setIsloading(false);
     formik.setFieldValue("image", imageUrl);
-    // setSelectedImage(URL.createObjectURL(event.target.files[0]));
   };
-  const handleSelectVedeo = () => {
-    // setSelectedVideo(URL.createObjectURL(event.target.files[0]));
+
+
+  const handleSelectVedeo = async(event) => {
+    setIsloading(true);
+    const videoUrl = uploadToCloud(event.target.files[0], "video");
+    console.log("videoUrl", videoUrl);
+    setSelectedVideo(videoUrl);
+    setIsloading(false);
+    formik.setFieldValue("video", videoUrl);
+    
   };
 
 

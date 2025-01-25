@@ -79,6 +79,8 @@ import { API_URL } from '../../config/api.js';
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './auth.actionType.js';
 import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE } from './auth.actionType.js';
 import { GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE } from './auth.actionType.js';
+import { UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAILURE } from './auth.actionType.js';
+
 
 
 export const LoginUserAction = (LoginData, navigate) => async (dispatch) => {
@@ -157,7 +159,7 @@ export const RegisterUserAction = (LoginData, navigate) => async (dispatch) => {
 
 export const GetProfileAction = (token) => async (dispatch) => {
   try {
-    dispatch({ type: "GET_PROFILE_REQUEST" });
+    dispatch({ type: GET_PROFILE_REQUEST });
 
     const { data } = await axios.get(`${API_URL}/api/users/profile`, {
       headers: {
@@ -170,10 +172,10 @@ export const GetProfileAction = (token) => async (dispatch) => {
 
 
     // Make sure you're passing the correct data
-    dispatch({ type: "GET_PROFILE_SUCCESS", payload: data }); // Ensure this is passing 'data' properly
+    dispatch({ type: GET_PROFILE_SUCCESS, payload: data }); // Ensure this is passing 'data' properly
   } catch (error) {
     console.error("Profile Error:", error);
-    dispatch({ type: "GET_PROFILE_FAILURE", payload: error.response?.data?.message });
+    dispatch({ type: GET_PROFILE_FAILURE, payload: error.response?.data?.message });
   }
 };
 
@@ -181,15 +183,15 @@ export const GetProfileAction = (token) => async (dispatch) => {
 // creat update profile action
 export const UpdateProfileAction = (data, token) => async (dispatch) => {
   try {
-    dispatch({ type: "UPDATE_PROFILE_REQUEST" });
+    dispatch({ type: UPDATE_PROFILE_REQUEST });
     const { data: response } = await axios.put(`${API_URL}/api/users/`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("UPDATE_PROFILE_SUCCESS:", data); // Log the profile data
-    dispatch({ type: "UPDATE_PROFILE_SUCCESS", payload: response });
+    console.log(UPDATE_PROFILE_SUCCESS, data); // Log the profile data
+    dispatch({ type: UPDATE_PROFILE_SUCCESS , payload: response });
   } catch (error) {
-    dispatch({ type: "UPDATE_PROFILE_FAILURE", payload: error.response?.data?.message });
+    dispatch({ type: UPDATE_PROFILE_FAILURE , payload: error.response?.data?.message });
   }
 };
