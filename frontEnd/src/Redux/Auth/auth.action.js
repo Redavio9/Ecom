@@ -84,9 +84,10 @@ import { GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE } from '.
 export const LoginUserAction = (LoginData, navigate) => async (dispatch) => {
   try 
   {
+    // console.log("LoginData:", LoginData);
     dispatch({ type: LOGIN_REQUEST });
     const { data } = await axios.post(`${API_URL}/auth/signin`, LoginData.data);
-    
+    console.log("LoginData:", data);
     if (data.token) 
     {
       localStorage.setItem('jwt', data.token);
@@ -94,7 +95,8 @@ export const LoginUserAction = (LoginData, navigate) => async (dispatch) => {
         type: LOGIN_SUCCESS, 
         payload: { user: data.user, jwt: data.token } 
       });
-      navigate('/');
+      window.location.href = '/';
+      // navigate('/');
     } 
     else {
       dispatch({ type: LOGIN_FAILURE });
@@ -110,23 +112,9 @@ export const LoginUserAction = (LoginData, navigate) => async (dispatch) => {
 };
 
 
-// export const LoginUserAction = (LoginData) => async (dispatch) => {
-//   try {
-//     dispatch({ type: LOGIN_REQUEST });
-//     const { data } = await axios.post(`${API_URL}/auth/signin`, LoginData.data);
-//     if(data.token) {
-//         localStorage.setItem('jwt', data.token);
-//         // LoginData.navigate('/dashboard');
-//         }
-//         console.log("login success", data);
-//     dispatch({ type: LOGIN_SUCCESS, payload: data.jwt });
-//   } catch (error) {
-//     dispatch({
-//       type: LOGIN_FAILURE,
-//     //   payload: error.response.data.message, 
-//     });
-//   }
-// }
+
+
+
 
 
 

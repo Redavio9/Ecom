@@ -15,11 +15,13 @@ const validationSchema = Yup.object({
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = localStorage.getItem('jwt');
 
   const handleSubmit = (values) => {
     console.log("handle submit", values);
     // Dispatcher l'action de connexion et rediriger après une connexion réussie
-    dispatch(LoginUserAction({ data: values }, navigate));
+    dispatch(LoginUserAction({ data: values, navigate }));
+
   };
 
   return (

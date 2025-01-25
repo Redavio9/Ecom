@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.shadow-custom {
+  box-shadow: 0 4px 10px rgba(9, 240, 251, 0.5); /* Adjust rgba alpha for transparency */
+}
