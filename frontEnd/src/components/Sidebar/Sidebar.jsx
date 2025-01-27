@@ -40,7 +40,10 @@ const Sidebar = () => {
 // }
 
   return (
-    <Card className="h-screen flex justify-between flex-col py-5" sx={{ borderRadius: '12px', boxShadow: 1 }}>
+    <Card style={{
+                  backgroundColor: 'transparent',
+                }} 
+      className="h-screen flex justify-between flex-col py-5" sx={{ borderRadius: '12px', boxShadow: 1 }}>
       <div className="space-y-8 pl-5 pb-8">
         <div>
           <span className="logo font-mono font-bold text-2xl text-emerald-800">1337</span>

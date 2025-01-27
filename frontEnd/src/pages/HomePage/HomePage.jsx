@@ -10,6 +10,8 @@ import HomeRight from "../../components/HomeRight/HomeRight.jsx";
 import { useDispatch } from "react-redux";
 import { GetProfileAction } from "../../Redux/Auth/auth.action";
 import { useNavigate } from "react-router-dom";
+import background from '../../static/images/homee.jpg';
+
 
 function HomePage() {
   console.log("HomePage");
@@ -31,7 +33,13 @@ function HomePage() {
   const showHomeRight = ["/"].includes(location.pathname);  // List routes that need HomeRight
 
   return (
-    <div className="px-20">
+    <div className="px-20" style={{ backgroundImage: `url(${background})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center', 
+    backgroundRepeat: 'no-repeat', 
+    width: '100%', 
+    filter: 'brightness(0.9)',
+  }}>
       <Grid container spacing={0}>
         {/* Sidebar */}
         <Grid item xs={0} lg={3}>

@@ -132,7 +132,8 @@ const Register = () => {
         <Button 
           type="submit" 
           variant="contained" 
-          color="primary" 
+          color="primary"
+          style={{ backgroundColor: '#002a54' }}
           fullWidth>
           Register
         </Button>

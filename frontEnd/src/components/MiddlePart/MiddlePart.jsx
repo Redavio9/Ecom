@@ -38,7 +38,10 @@ const MiddlePart = () => {
         {Story.map((item) => <StoryCircle/>)}
       </section>
 
-      <Card className="p-5 mt-5">
+      <Card style={{
+                  backgroundColor: 'transparent',
+                }} 
+        className="p-5 mt-5">
         {/* Avatar and Input */}
         <div className="flex justify-between items-center">
           <Avatar src="https://img.freepik.com/premium-photo/marketing-manager-digital-avatar-generative-ai_934475-9082.jpg" />

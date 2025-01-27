@@ -29,11 +29,14 @@ const Authentication = () => {
   else 
   {
     return (
-      <div style={{ backgroundImage: `url(${backgound})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh' }}>
+      <div style={{ backgroundImage: `url(${backgound})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh'}}>
               {/* <Grid item xs={12} className=" flex justify-center items-center h-screen bg-gray-50 "> */}
               <Grid item xs={12} className="flex items-center h-screen">
                 <div className='px-20 flex flex-col justify-center h-full'>
-                  <Card className='card p-8 bg-[#09f0fb] shadow-lg'>
+                  <Card style={{
+                                backgroundColor: 'rgb(255 255 255 / 66%)',
+                                boxShadow: 'rgb(7, 227, 253) 0px 2px 14px',
+                              }} className="card p-8">
                     <div className='flex flex-col items-center mb-5 space-y-1'>
                       <h1 className='logo text-center'> Solix </h1>
                       <p className='text-center text-sm w-[70%]'>

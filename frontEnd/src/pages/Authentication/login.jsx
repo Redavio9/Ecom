@@ -56,7 +56,8 @@ const Login = () => {
               <ErrorMessage name="password" component="div" className="text-red-500" />
             </div>
           </div>
-          <Button 
+          <Button
+            style={{ backgroundColor: '#002a54' }}
             type="submit" 
             variant="contained" 
             color="primary" 

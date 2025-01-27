@@ -8,7 +8,10 @@ const popularUser =  [1,1,1,1]
 
 const HomeRight = () => {
   return (
-    <Card className='m-5' sx={{ borderRadius: '12px', boxShadow: 3 }}>
+    <Card style={{
+                  backgroundColor: 'transparent',
+                }} 
+    className='m-5' sx={{ borderRadius: '12px', boxShadow: 3 }}>
       {/* <searchUser /> */}
       <div className='flex justify-between py-5 items-centre'>
         <p className='font-semibold opacity-70 px-5'>Suggestions for you</p>
